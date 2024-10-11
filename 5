@@ -1,0 +1,31 @@
+from sklearn.decomposition import PCA
+from sklearn.linear_model import LinearRegression
+
+# Применим PCA для данных X (числовые признаки)
+pca = PCA(n_components=2)  # Выберем 2 главных компоненты
+X_pca = pca.fit_transform(X)
+
+# Построим модель линейной регрессии с использованием данных после PCA
+lr_pca = LinearRegression()
+lr_pca.fit(X_pca, y)
+
+# Сделаем предсказания и оценим модель
+y_pca_pred = lr_pca.predict(X_pca)
+
+# Оценка качества модели после PCA
+pca_mae = mean_absolute_error(y, y_pca_pred)
+pca_mse = mean_squared_error(y, y_pca_pred)
+pca_r2 = r2_score(y, y_pca_pred)
+
+# Теперь сравним это с моделью на исходных данных (без PCA)
+lr_original = LinearRegression()
+lr_original.fit(X, y)
+
+y_original_pred = lr_original.predict(X)
+
+# Оценка качества модели на исходных данных
+original_mae = mean_absolute_error(y, y_original_pred)
+original_mse = mean_squared_error(y, y_original_pred)
+original_r2 = r2_score(y, y_original_pred)
+
+pca_mae, pca_mse, pca_r2, original_mae, original_mse, original_r2

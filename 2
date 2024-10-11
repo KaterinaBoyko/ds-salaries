@@ -1,0 +1,14 @@
+import matplotlib.pyplot as plt
+import seaborn as sns
+
+# только числовые признаки для построения корреляционной матрицы
+numerical_columns = ['work_year', 'salary', 'salary_in_usd', 'remote_ratio']
+
+# Построим корреляционную матрицу
+correlation_matrix = data[numerical_columns].corr()
+
+# Визуализация корреляционной матрицы с помощью heatmap
+plt.figure(figsize=(8, 6))
+sns.heatmap(correlation_matrix, annot=True, cmap='coolwarm', linewidths=0.5)
+plt.title('Корреляционная матрица числовых признаков')
+plt.show()

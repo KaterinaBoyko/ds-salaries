@@ -1,0 +1,14 @@
+import pandas as pd
+
+# Load the dataset to start initial analysis
+file_path = '/mnt/data/ds_salaries (2).csv'
+data = pd.read_csv(file_path)
+
+# Display basic information about the dataset
+data_info = data.info()
+data_description = data.describe()
+
+# Display the first few rows to understand the structure of the dataset
+data_head = data.head()
+
+data_info, data_description, data_head

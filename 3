@@ -1,0 +1,11 @@
+# Проверим количество дубликатов
+duplicates_count = data.duplicated().sum()
+
+# Удалим дубликаты
+data_cleaned = data.drop_duplicates()
+
+# Количество удалённых дубликатов
+removed_duplicates = duplicates_count - data_cleaned.duplicated().sum()
+
+
+removed_duplicates, data_cleaned.shape
